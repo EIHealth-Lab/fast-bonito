@@ -55,6 +55,32 @@ device: inference device, "npu" on D910 or "cuda" on NVIDIA.
 
 
 
+## Usage in docker
+You can also use fast-bonito in a Docker container using the following steps.
+
+```shell
+# pull the image
+docker pull swr.cn-north-4.myhuaweicloud.com/fast-bonito/fast-bonito:0.2.2
+
+# define input and output paramerters
+INPUT_FAST5="input_fast5"  # input fast5 directory
+OUTPUT_BASECALL="output"  # output directory
+OUTPUT_NAME_BASECALL="test.fasta"  # output fasta name
+
+# running fast bonito in a container
+nvidia-docker run -it --rm --ipc host -v ${INPUT_FAST5}:/input_data \
+    -v ${OUTPUT_BASECALL}:/output \
+    swr.cn-north-4.myhuaweicloud.com/fast-bonito/fast-bonito:0.2.2 \
+    sh -c "cd /workspace/fast-bonito/ && \
+           python basecaller.py --reads_directory /input_data --output /output/${OUTPUT_NAME_BASECALL}"
+
+```
+
+
+
+
+
+
 ## Requirements
 
 - ont_fast5_api==3.0.1
