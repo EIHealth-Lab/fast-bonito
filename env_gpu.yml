@@ -1,0 +1,13 @@
+name: fast-bonito
+channels:
+  - defaults
+dependencies:
+  - tqdm==4.31.1
+  - numpy==1.19.2
+  - scipy==1.5.2
+  - tensorflow-gpu==1.14.0
+  - pip:
+    - torch==1.4.0
+    - mappy==2.17
+    - ont_fast5_api==3.0.1
+    - fast-ctc-decode==0.2.5
